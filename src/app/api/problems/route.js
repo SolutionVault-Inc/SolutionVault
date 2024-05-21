@@ -13,9 +13,17 @@ export async function GET() {
 
 export async function POST(req) {
   try {
-    console.log("FORM DATA",req.body);
-    const { name } = await req.json();
-    const result = await query('INSERT INTO users(name) VALUES($1) RETURNING *', [name]);
+    //deconstruct
+    const { type,  title, description, solution} = await req.json();
+    // const type ='example';
+    // const title = 'example';
+    // const description = 'example';
+    // const solution = 'example';
+    const user_id = 10001;
+    //make array
+    const values = [type, title, description, solution, user_id];
+    //run query
+    const result = await db('INSERT INTO problems (category, title, description, solution, user_id) VALUES($1, $2, $3, $4, $5) RETURNING *', values);
     return NextResponse.json(result.rows[0]);
   } catch (error) {
     return NextResponse.error({ status: 500, body: 'Internal Server Error' });
