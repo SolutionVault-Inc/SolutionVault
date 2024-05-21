@@ -14,6 +14,7 @@ export default function Home() {
   // async function handleSubmit(e: any) {
   //   e.preventDefault();
   //   const formData = new FormData(e.currentTarget)
+  //   console.log(formData)
   //   const response = await fetch('/api/problems', {
   //     method: 'POST',
   //     body: formData,
