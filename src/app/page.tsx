@@ -1,9 +1,7 @@
-
 import Navbar from '@/app/components/NavBar';
-import ProblemForm from './problemForm';
+import ProblemForm from './components/ProblemForm.tsx';
 
 export default function Home() {
-
   return (
     <>
       <header>
@@ -12,7 +10,7 @@ export default function Home() {
         <button>Get All Problems</button> */}
       </header>
       <main>
-          <ProblemForm/>
+        <ProblemForm />
       </main>
     </>
   );
