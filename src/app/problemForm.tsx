@@ -1,47 +1,44 @@
-
-
-"use client"
-import { useState } from "react"
-import axios from 'axios'
-import './problem.css'
-
+'use client';
+import { useState } from 'react';
+import axios from 'axios';
+import './problem.css';
 
 const ProblemForm = () => {
   const [formData, setFormData] = useState({
     description: '',
     title: '',
-    type: 'front-end'
-  })
- 
-  async function handleSubmit(e: any) {
+    type: 'front-end',
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      await axios.post('/api/problems', formData)
-      setFormData({
-        description: '',
-        title: '',
-        type: 'front-end'
-      })
-    } catch (e) {
-      console.error('Error submitting form:', e);
-    }
-  }
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
+    const title = formData.get('title') as string;
+    const description = formData.get('description') as string;
+    const type = formData.get('type') as string;
+
+    await axios.post('/api/problems', {
+      title,
+      description,
+      type,
+    });
+  };
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
-    })
-  }
+      [name]: value,
+    });
+  };
 
   const handleClear = () => {
     setFormData({
       description: '',
       title: '',
-      type: 'front-end'
-    })
-  }
+      type: 'front-end',
+    });
+  };
 
   return (
 
