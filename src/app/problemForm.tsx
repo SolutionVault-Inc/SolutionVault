@@ -1,6 +1,8 @@
 'use client'
 
+import { ClassNames } from '@emotion/react';
 import axios from 'axios'
+import './problem.css'
 
 const ProblemForm = () => {
 
@@ -13,8 +15,10 @@ const ProblemForm = () => {
   }
 
   return (
+    <div className='form-container'>
+    <div className = 'form-data'>
     <form onSubmit={(e) => handleSubmit(e)}>
-      <p>Was you problem?</p>
+      <p>Whats you problem?</p>
       <textarea
         name="problem"></textarea>
       <br></br>
@@ -31,6 +35,13 @@ const ProblemForm = () => {
       <button type="submit">Send</button>
       <button>Clear</button>
     </form>
+    </div>
+    <div className='buttons'>
+    {/* <button>Add Problem</button>
+    <button>Get All Problems</button> */}
+    
+    </div>
+    </div>
   )
 }
 

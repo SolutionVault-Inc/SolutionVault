@@ -1,0 +1,16 @@
+.form-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100hv;
+  
+}
+
+.form-data{
+  border: 2px solid black;
+  padding: 50px;
+}
+
+.buttons{
+   margin-top: 10px;
+}
