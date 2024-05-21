@@ -5,7 +5,7 @@ import { db } from '../../../lib/db';
 
 export async function GET() {
   try {
-    const result = await db.query('SELECT * FROM problems', []);
+    const result = await db.query('SELECT * FROM problems ORDER BY created_at DESC', []);
     return NextResponse.json(result.rows);
   } catch (error) {
     return new NextResponse('Internal Server Error', { status: 500 });
