@@ -6,7 +6,7 @@ export async function GET(req) {
     const { searchTerms } = await req.json();
     const solutionIds = await fetchAndProcessDescriptions(searchTerms);
 
-    const result = await db(
+    const result = await db.query(
       'SELECT * FROM problems WHERE id = ANY($1::int[])',
       [solutionIds]
     );
@@ -20,7 +20,7 @@ export async function GET(req) {
 async function fetchAndProcessDescriptions(searchTerms) {
   try {
     const solutions = [];
-    const res = await db('SELECT id, description FROM problems');
+    const res = await db.query('SELECT id, description FROM problems');
     const problems = res.rows;
 
     const regex = new RegExp(searchTerms); // Adjust your regex pattern as needed
