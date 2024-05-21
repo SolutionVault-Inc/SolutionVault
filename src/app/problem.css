@@ -6,11 +6,26 @@
   
 }
 
+form {
+  display:flex;
+  flex-direction: column;
+  gap: 1rem;
+  width:50%;
+}
+
 .form-data{
   border: 2px solid black;
   padding: 50px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .buttons{
    margin-top: 10px;
+}
+
+.submit {
+  background-color: rebeccapurple;
 }

@@ -12,20 +12,27 @@ describe('ProblemForm', () => {
 
     render(React.createElement(ProblemForm));
 
-    // Adjust selectors to match the component structure
-    const descriptionTextarea = screen.getByRole('paragarph', { name: /Whats you problem\?/i });
-    const typeSelect = screen.getByLabelText(/type/i);
-    const submitButton = screen.getByRole('button', { name: /send/i });
+    const titleInput = screen.getByLabelText(/title:/i);
+    const descriptionTextarea = screen.getByLabelText(/describe the problem:/i);
+    const typeSelect = screen.getByLabelText(/which stack\?/i);
+    const submitButton = screen.getByRole('button', { name: /add problem/i });
+    const clearButton = screen.getByRole('button', { name: /clear/i });
 
+    fireEvent.change(titleInput, { target: { value: 'Sample Title' } });
     fireEvent.change(descriptionTextarea, { target: { value: 'Sample problem description' } });
     fireEvent.change(typeSelect, { target: { value: 'front-end' } });
     fireEvent.click(submitButton);
 
-    await screen.findByText(/success/i);
-
     expect(mockPost).toHaveBeenCalledWith('/api/problems', {
+      title: 'Sample Title',
       description: 'Sample problem description',
       type: 'front-end',
     });
+
+    // Testing the clear button
+    fireEvent.click(clearButton);
+    expect(titleInput).toHaveValue('');
+    expect(descriptionTextarea).toHaveValue('');
+    expect(typeSelect).toHaveValue('front-end');
   });
 });
