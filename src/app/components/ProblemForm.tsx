@@ -19,6 +19,7 @@ const ProblemForm = () => {
       description,
       type,
     });
+    handleClear()
     console.log(response);
   };
 
