@@ -20,7 +20,7 @@ interface Problem {
 async function fetchProblems(): Promise<Problem[]> {
   const res = await fetch('http://localhost:3000/api/problems', {
     // Optional: Adjust the caching behavior if necessary
-    // cache: 'no-store', // Uncomment this line to disable caching
+    cache: 'no-store', // Uncomment this line to disable caching
     next: { revalidate: 3600 },
   });
 
