@@ -45,34 +45,66 @@ const ProblemForm = () => {
 
   return (
 
-    <div className='form-container'>
-    <div className = 'form-data'>
-    <form onSubmit={(e) => handleSubmit(e)}>
-      <p>Whats you problem?</p>
+    <div className='form-data'>
+      <form onSubmit={(e) => handleSubmit(e)}>
 
-      <textarea
-        name="description" value={formData.description} onChange={handleChange}></textarea>
-      <br></br>
-      <label>Type</label>
-      <br></br>
-      <select
-        name="type" value={formData.type} onChange={handleChange}
-      >
-        <option value="front-end">Front-End</option>
-        <option value="back-end">Back-End</option>
-        <option value="other">Other</option>
-      </select>
+        <label 
+          htmlFor="problemTitle"
+        >
+            Title: 
+        </label>
 
-      <button type="submit">Send</button>
-      <button onClick={handleClear}>Clear</button>
-    </form>
-    </div>
-    <div className='buttons'>
-    {/* <button>Add Problem</button>
-    <button>Get All Problems</button> */}
-    
-    </div>
-    </div>
+        <input 
+          id="problemTitle" 
+          name="title" 
+          value={formData.title} 
+          onChange={handleChange}
+        ></input>
+
+        <label 
+          htmlFor="problemDescription"
+        >
+          Describe the Problem: 
+        </label>
+
+        <textarea
+          id="problemDescription" 
+          name="description" 
+          value={formData.description} 
+          onChange={handleChange}
+        ></textarea>
+
+        <label 
+          htmlFor="type"
+        >
+          Which Stack?
+        </label>
+
+        <select
+          id="type" 
+          name="type" 
+          value={formData.type} 
+          onChange={handleChange}
+        >
+          <option value="front-end">Front-End</option>
+          <option value="back-end">Back-End</option>
+          <option value="other">Other</option>
+        </select>
+
+        <button 
+          type="submit"
+        >
+          Add Problem
+        </button>
+
+        <button 
+          onClick={handleClear}
+        >
+          Clear
+        </button>
+
+      </form>
+  </div>
   )
 }
 

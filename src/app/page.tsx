@@ -8,8 +8,8 @@ export default function Home() {
     <>
       <header>
         <Navbar />
-        <button>Add Problem</button>
-        <button>Get All Problems</button>
+        {/* <button>Add Problem</button>
+        <button>Get All Problems</button> */}
       </header>
       <main>
           <ProblemForm/>
