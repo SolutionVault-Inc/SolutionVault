@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "SolutionVault",
-  description: "Your solution to storing egineering related problem and their answers!",
+  description: "Your solution to storing engineering related problem and their answers!",
 };
 
 export default function RootLayout({
