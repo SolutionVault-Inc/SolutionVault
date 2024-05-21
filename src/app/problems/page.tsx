@@ -42,6 +42,7 @@ const ProblemsPage = async () => {
       </header>
       
       <main>
+        <div className = "accordian">
         {problems.map((problem: Problem) => (
           <Accordion key={problem.id}>
             <AccordionSummary
@@ -69,7 +70,9 @@ const ProblemsPage = async () => {
               </p>
             </AccordionDetails>
           </Accordion>
+          
         ))}
+        </div>
       </main>
       
       <footer></footer>
