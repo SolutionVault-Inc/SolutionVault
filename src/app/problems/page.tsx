@@ -1,8 +1,4 @@
-'use client';
-import { useState, useEffect } from 'react';
 import Navbar from '@/NavBar';
-import axios from 'axios';
-import { GetServerSideProps } from 'next';
 
 interface Problem {
   id: string;
@@ -15,35 +11,23 @@ interface Problem {
   created_at: string;
 }
 
-interface HomeProps {
-  problems: Problem[];
+async function fetchProblems(): Promise<Problem[]> {
+  const res = await fetch('http://localhost:3000/api/problems', {
+    // Optional: Adjust the caching behavior if necessary
+    // cache: 'no-store', // Uncomment this line to disable caching
+    next: { revalidate: 3600 },
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
 }
 
-export default function Problems({ problems }: HomeProps) {
-  // const testObj = {
-  //   id: '',
-  //   title: '',
-  //   category: '',
-  //   description: '',
-  //   solution: '',
-  //   status: '',
-  //   issue: '',
-  //   created_at: '',
-  // };
-  // const [problems, setProblems] = useState<Problem[]>([testObj]);
+const ProblemsPage = async () => {
+  const problems = await fetchProblems();
 
-  // useEffect(() => {
-  //   async function fetchProblems() {
-  //     try {
-  //       const response = await axios('/api/problems');
-  //       console.log('Response', response);
-  //       setProblems(response.data);
-  //     } catch (e) {
-  //       console.error('Error fetching problems:', e);
-  //     }
-  //   }
-  //   fetchProblems();
-  // }, []);
   console.log(problems);
   return (
     <>
@@ -75,6 +59,6 @@ export default function Problems({ problems }: HomeProps) {
       <footer></footer>
     </>
   );
-}
+};
 
-// export const GetServerSideProps:
+export default ProblemsPage;
