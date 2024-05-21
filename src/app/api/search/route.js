@@ -8,7 +8,7 @@ export async function GET(req) {
 
     const result = await db.query(
       'SELECT * FROM problems WHERE id = ANY($1::int[])',
-      [solutionIds]
+      solutionIds
     );
     return NextResponse.json(result.rows);
   } catch (error) {

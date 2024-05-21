@@ -1,7 +1,9 @@
 
-'use client'
+
+import { ClassNames } from '@emotion/react';
 import axios from 'axios'
-import { useState } from 'react';
+import './problem.css'
+
 
 const ProblemForm = () => {
   const [formData, setFormData] = useState({
@@ -41,10 +43,12 @@ const ProblemForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor='form-title'>Title: </label>
-      <input type='text' name='title' id='form-title' value={formData.title} onChange={handleChange}></input>
-      <p>Was you problem?</p>
+
+    <div className='form-container'>
+    <div className = 'form-data'>
+    <form onSubmit={(e) => handleSubmit(e)}>
+      <p>Whats you problem?</p>
+
       <textarea
         name="description" value={formData.description} onChange={handleChange}></textarea>
       <br></br>
@@ -61,6 +65,13 @@ const ProblemForm = () => {
       <button type="submit">Send</button>
       <button onClick={handleClear}>Clear</button>
     </form>
+    </div>
+    <div className='buttons'>
+    {/* <button>Add Problem</button>
+    <button>Get All Problems</button> */}
+    
+    </div>
+    </div>
   )
 }
 
