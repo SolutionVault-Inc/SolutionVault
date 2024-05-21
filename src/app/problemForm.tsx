@@ -1,27 +1,43 @@
-'use client'
 
+'use client'
 import axios from 'axios'
+import { useState } from 'react';
 
 const ProblemForm = () => {
-
+  const [formData, setFormData] = useState({
+    problem: '',
+    typeProblem: 'front-end'
+  })
+ 
   async function handleSubmit(e: any) {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget)
-    const response = await axios.post('/api/problems', {
-      formData
+    console.log(formData)
+    const response = await axios.post('/api/problems/routes.js', formData)
+    console.log('response', response.data)
+    setFormData({
+      problem: '',
+      typeProblem: 'front-end'
+    })
+  }
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
     })
   }
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form onSubmit={handleSubmit}>
       <p>Was you problem?</p>
       <textarea
-        name="problem"></textarea>
+        name="problem" value={formData.problem} onChange={handleChange}></textarea>
       <br></br>
       <label>Type</label>
       <br></br>
       <select
-        name="typeProblem"
+        name="typeProblem" value={formData.typeProblem} onChange={handleChange}
       >
         <option value="front-end">Front-End</option>
         <option value="back-end">Back-End</option>
@@ -29,7 +45,7 @@ const ProblemForm = () => {
       </select>
 
       <button type="submit">Send</button>
-      <button>Clear</button>
+      {/* <button>Clear</button> */}
     </form>
   )
 }
