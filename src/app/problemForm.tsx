@@ -5,19 +5,23 @@ import { useState } from 'react';
 
 const ProblemForm = () => {
   const [formData, setFormData] = useState({
-    problem: '',
-    typeProblem: 'front-end'
+    description: '',
+    title: '',
+    type: 'front-end'
   })
  
   async function handleSubmit(e: any) {
     e.preventDefault();
-    console.log(formData)
-    const response = await axios.post('/api/problems/routes.js', formData)
-    console.log('response', response.data)
-    setFormData({
-      problem: '',
-      typeProblem: 'front-end'
-    })
+    try {
+      await axios.post('/api/problems', formData)
+      setFormData({
+        description: '',
+        title: '',
+        type: 'front-end'
+      })
+    } catch (e) {
+      console.error('Error submitting form:', e);
+    }
   }
 
   const handleChange = (e: any) => {
@@ -28,16 +32,26 @@ const ProblemForm = () => {
     })
   }
 
+  const handleClear = () => {
+    setFormData({
+      description: '',
+      title: '',
+      type: 'front-end'
+    })
+  }
+
   return (
     <form onSubmit={handleSubmit}>
+      <label htmlFor='form-title'>Title: </label>
+      <input type='text' name='title' id='form-title' value={formData.title} onChange={handleChange}></input>
       <p>Was you problem?</p>
       <textarea
-        name="problem" value={formData.problem} onChange={handleChange}></textarea>
+        name="description" value={formData.description} onChange={handleChange}></textarea>
       <br></br>
       <label>Type</label>
       <br></br>
       <select
-        name="typeProblem" value={formData.typeProblem} onChange={handleChange}
+        name="type" value={formData.type} onChange={handleChange}
       >
         <option value="front-end">Front-End</option>
         <option value="back-end">Back-End</option>
@@ -45,9 +59,9 @@ const ProblemForm = () => {
       </select>
 
       <button type="submit">Send</button>
-      {/* <button>Clear</button> */}
+      <button onClick={handleClear}>Clear</button>
     </form>
   )
 }
 
-export default ProblemForm
+export default ProblemForm;
