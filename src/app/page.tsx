@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Navbar from '@/NavBar';
+import Navbar from '@/app/components/NavBar';
 import ProblemForm from './problemForm';
 
 export default function Home() {

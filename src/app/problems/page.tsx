@@ -1,4 +1,10 @@
-import Navbar from '@/NavBar';
+import React from 'react';
+import Navbar from '@/app/components/NavBar';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import './page.css'
 
 interface Problem {
   id: string;
@@ -34,28 +40,41 @@ const ProblemsPage = async () => {
       <header>
         <Navbar />
       </header>
+      
       <main>
+        <div className = "accordian">
         {problems.map((problem: Problem) => (
-          <div key={problem.id} className="problem">
-            <h3>{problem.title}</h3>
-            <p>
-              <strong>Category:</strong> {problem.category}
-            </p>
-            <p>
-              <strong>Description:</strong> {problem.description}
-            </p>
-            <p>
-              <strong>Solution:</strong> {problem.solution}
-            </p>
-            <p>
-              <strong>Status:</strong> {problem.status}
-            </p>
-            <p>
-              <strong>Created At:</strong> {new Date(problem.created_at).toLocaleString()}
-            </p>
-          </div>
+          <Accordion key={problem.id}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls={`panel-${problem.id}-content`}
+              id={`panel-${problem.id}-header`}
+            >
+              <h3>{problem.title}</h3>
+            </AccordionSummary>
+            <AccordionDetails>
+              <p>
+                <strong>Type:</strong> {problem.category}
+              </p>
+              <p>
+                <strong>Description:</strong> {problem.description}
+              </p>
+              <p>
+                <strong>Solution:</strong> {problem.solution}
+              </p>
+              <p>
+                <strong>Status:</strong> {problem.status}
+              </p>
+              <p>
+                <strong>Created At:</strong> {new Date(problem.created_at).toLocaleString()}
+              </p>
+            </AccordionDetails>
+          </Accordion>
+          
         ))}
+        </div>
       </main>
+      
       <footer></footer>
     </>
   );
