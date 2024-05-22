@@ -42,10 +42,6 @@ form {
   
 }
 
-.buttons{
-   margin-top: 10px;
-}
-
 .submit {
   background-color: rebeccapurple;
 }
@@ -56,4 +52,57 @@ form {
   text-align: center;
   font-weight: 500;
   flex-wrap: nowrap;
+}
+
+html{
+  font-size: large;
+}
+
+input,
+textarea,
+select {
+  background-color: transparent; 
+  color: white; 
+  border: 1px solid white; 
+  padding: 0.5rem; 
+  border-radius: 5px; 
+  outline: none; 
+}
+
+.submit{
+  background-color: transparent;
+  color: white; 
+  border: 1px solid white;
+  padding: 0.5rem 1rem; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+  width: 100%;
+}
+.submit:hover{
+  background-color: #CDFF57; 
+  border-color:  #CDFF57;
+  color: black; 
+}
+
+.clear{
+  background-color: transparent;
+  color: white; 
+  border: 1px solid white; 
+  padding: 0.5rem 1rem; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+  width: 100%;
+}
+
+.clear:hover{
+  background-color: #FF8957; 
+  border-color: #FF8957; 
+  color: black; 
+}
+
+.btn-container{
+  display: flex;
+  gap: 1rem; 
 }

@@ -88,19 +88,18 @@ const ProblemForm = () => {
           <option value="back-end">Back-End</option>
           <option value="other">Other</option>
         </select>
-
-        <button 
+        <div className='btn-container'>
+        <button className='submit'
           type="submit"
         >
           Add Problem
         </button>
-
-        <button 
+        <button className='clear'
           onClick={handleClear}
         >
           Clear
         </button>
-
+        </div>
       </form>
     </div>
   </div>
