@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { db } from '../../../lib/db';
 
-export async function GET(req) {
+export async function POST(req) {
   try {
     console.log('Inside GET function');
     const { searchTerms } = await req.json();
@@ -12,6 +12,10 @@ export async function GET(req) {
     const result = await db.query('SELECT * FROM problems WHERE id = ANY($1::int[])', [solutionIds]);
     console.log('Query result:', result.rows);
 
+    const result = await db.query(
+      'SELECT * FROM problems WHERE id = ANY($1::int[])',
+      [solutionIds]
+    );
     return NextResponse.json(result.rows);
   } catch (error) {
     console.error('Error fetching problems:', error);
