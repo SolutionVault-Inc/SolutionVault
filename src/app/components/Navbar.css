@@ -5,15 +5,17 @@
   justify-content: space-between;
   padding: 15px 7%;
   background-color: black;
-  
+  box-shadow: 0 0 20px rgba(196, 149, 40, 0.87);
 }
 .logo{
   color: white;
   font-size: 50px;
   margin-left: 20px;
 }
-.logo .img{
+.logo-pic{
   margin: 20px;
+  width: 80px;
+  height: 80px;
 }
 
 ul {

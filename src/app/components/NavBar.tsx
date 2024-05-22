@@ -2,13 +2,14 @@ import './Navbar.css'
 import Link from 'next/link';
 import Image from 'next/image';
 import user from '../../assets/user.svg'
+import vault from '../../assets/vault.png'
 
 const Navbar = () => {
 
   return (
     <div className = 'navBar'>
-
     <div className='logo'>
+    <Image className='logo-pic' src={vault} alt="user image"/>
     SolutionVault
     </div>
     <ul>
