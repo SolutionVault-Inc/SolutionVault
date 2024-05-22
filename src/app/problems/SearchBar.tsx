@@ -6,15 +6,16 @@ import { useRouter } from 'next/navigation'
 import './SearchBar.css'
 
 
-const SearchBar = () => {
+
+const SearchBar = (props) => {
 
   const [ searchContent,setSearchContent ] = useState("")
 
   const router = useRouter()
   
-  const handleSearch = (e) => {
-    console.log(e.target.value)
+  const handleSearch = (e:any) => {
     setSearchContent(e.target.value)
+
   }
 
   const handleClick = async() => {
@@ -26,7 +27,8 @@ const SearchBar = () => {
       body:JSON.stringify({searchTerms:searchContent})
     })
     setSearchContent("")
-    console.log(response.json())
+    const newProblems = await response.json()
+    props.setProblems(newProblems)
     router.refresh()
   }
 

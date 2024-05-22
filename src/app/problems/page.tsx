@@ -3,6 +3,7 @@ import React from 'react';
 import './page.css'
 import AccordionList from './AccordianList';
 import SearchBar from './SearchBar';
+import ClientContainer from './ClientContainer';
 
 interface Problem {
   id: string;
@@ -36,7 +37,10 @@ const ProblemsPage = async () => {
   return (
     <>
       <main className="problems-main">
-        <SearchBar/>
+        <ClientContainer
+          problems={problems}
+        />
+        {/* <SearchBar/>
         <div className = "accordian">
         {problems.map((problem: Problem) => (
           <AccordionList
@@ -44,7 +48,7 @@ const ProblemsPage = async () => {
             problem={problem}
           />
         ))}
-        </div>
+        </div> */}
       </main>
       
       <footer></footer>

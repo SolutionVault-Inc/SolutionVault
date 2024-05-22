@@ -5,7 +5,6 @@ export async function POST(req:any) {
   try {
 
     const { id } = await req.json();
-    console.log(id)
     if (!id) {
       return new NextResponse('Problem ID is required', { status: 400 });
     }
