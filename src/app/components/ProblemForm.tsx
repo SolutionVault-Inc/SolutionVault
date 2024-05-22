@@ -20,7 +20,6 @@ const ProblemForm = () => {
       type,
     });
     handleClear()
-    console.log(response);
   };
 
   const handleChange = (e: any) => {

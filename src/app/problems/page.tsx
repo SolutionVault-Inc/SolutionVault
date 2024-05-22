@@ -1,10 +1,5 @@
 
 import React from 'react';
-import Navbar from '@/app/components/NavBar';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './page.css'
 import AccordionList from './AccordianList';
 
@@ -19,7 +14,7 @@ interface Problem {
   created_at: string;
 }
 
-async function fetchProblems(): Promise<Problem[]> {
+export async function fetchProblems(): Promise<Problem[]> {
   const res = await fetch('http://localhost:3000/api/problems', {
     // Optional: Adjust the caching behavior if necessary
     cache: 'no-store', // Uncomment this line to disable caching
