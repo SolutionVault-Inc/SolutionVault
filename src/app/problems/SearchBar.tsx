@@ -4,15 +4,17 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import './SearchBar.css';
 
-const SearchBar = () => {
-  const [searchContent, setSearchContent] = useState('');
 
-  const router = useRouter();
+const SearchBar = (props) => {
 
-  const handleSearch = (e: any) => {
-    console.log(e.target.value);
-    setSearchContent(e.target.value);
-  };
+  const [ searchContent,setSearchContent ] = useState("")
+
+  const router = useRouter()
+  
+  const handleSearch = (e:any) => {
+    setSearchContent(e.target.value)
+
+  }
 
   const handleClick = async () => {
     const response = await fetch('/api/search', {
@@ -20,12 +22,13 @@ const SearchBar = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ searchTerms: searchContent }),
-    });
-    setSearchContent('');
-    console.log(response.json());
-    router.refresh();
-  };
+      body:JSON.stringify({searchTerms:searchContent})
+    })
+    setSearchContent("")
+    const newProblems = await response.json()
+    props.setProblems(newProblems)
+    router.refresh()
+  }
 
   return (
     <div className="searchBarContainer">

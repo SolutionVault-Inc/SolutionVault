@@ -2,6 +2,7 @@ import React from 'react';
 import './page.css';
 import AccordionList from './AccordianList';
 import SearchBar from './SearchBar';
+import ClientContainer from './ClientContainer';
 
 interface Problem {
   id: string;
@@ -34,12 +35,18 @@ const ProblemsPage = async () => {
   return (
     <>
       <main className="problems-main">
-        <SearchBar />
-        <div className="accordian">
-          {problems.map((problem: Problem) => (
-            <AccordionList key={crypto.randomUUID()} problem={problem} />
-          ))}
-        </div>
+        <ClientContainer
+          problems={problems}
+        />
+        {/* <SearchBar/>
+        <div className = "accordian">
+        {problems.map((problem: Problem) => (
+          <AccordionList
+            key={crypto.randomUUID()}
+            problem={problem}
+          />
+        ))}
+        </div> */}
       </main>
 
       <footer></footer>
