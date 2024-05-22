@@ -43,8 +43,9 @@ const ProblemForm = () => {
   return (
 
     <div className='form-data'>
+        <div className='f-container'>
       <form onSubmit={(e) => handleSubmit(e)}>
-
+      <div className='title'>Add a new question.</div>
         <label 
           htmlFor="problemTitle"
         >
@@ -101,6 +102,7 @@ const ProblemForm = () => {
         </button>
 
       </form>
+    </div>
   </div>
   )
 }
