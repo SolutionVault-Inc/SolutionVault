@@ -80,6 +80,26 @@ body{
   transition: background-color 0.3s, border-color 0.3s; 
   width: 100%;
 }
+
+.edit{
+  background-color: #b3b1b0;
+  color: black; 
+  border: 1px solid white;
+  padding: 0.5rem 1rem; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+  width: 100%;
+}
+.delete2:hover{
+  background-color: #FF8957;;
+  color: black;
+}
+.edit:hover{
+  background-color: #CDFF57;
+  color: black;
+}
+
 .css-1wnsr1i {
   background: black;
   color: white;
@@ -93,3 +113,71 @@ body{
   gap: 1rem;
   padding-top: 5px;
 }
+
+.buttonModal{
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  gap: 1rem;
+  padding-top: 5px;
+}
+
+.submitbtns{
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  gap: 1rem;
+  padding-top: 5px;
+}
+.sub-modal-btn{
+  background-color: #b3b1b0;
+  color: white; 
+  border: 1px solid white;
+  padding: 0.5rem 1rem; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+  width: 100%;
+}
+
+.sub-modal-btn:hover{
+  background-color: #CDFF57; 
+  border-color:  white;
+  color: black; 
+}
+
+.cancel-modal-btn{
+  background-color: #b3b1b0;
+  color: white; 
+  border: 1px solid white;
+  padding: 0.5rem 1rem; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+  width: 100%;
+}
+
+.cancel-modal-btn:hover{
+  background-color: #FF8957; 
+  border-color: white; 
+  color: black; 
+}
+
+textarea{
+  background-color: transparent; 
+  color: white; 
+  border: 1px solid white; 
+  padding: 0.5rem; 
+  border-radius: 5px; 
+  outline: none; 
+}
+
+#type{
+  background-color: transparent; 
+  color: white; 
+  border: 1px solid white; 
+  padding: 0.5rem; 
+  border-radius: 5px; 
+  outline: none; 
+}
+
