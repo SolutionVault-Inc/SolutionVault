@@ -2,6 +2,7 @@
 import React from 'react';
 import './page.css'
 import AccordionList from './AccordianList';
+import SearchBar from '../components/SearchBar';
 
 interface Problem {
   id: string;
@@ -35,6 +36,7 @@ const ProblemsPage = async () => {
   return (
     <>
       <main>
+        <SearchBar/>
         <div className = "accordian">
         {problems.map((problem: Problem) => (
           <AccordionList

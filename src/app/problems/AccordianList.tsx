@@ -37,7 +37,7 @@ const AccordionList = (props:any) => {
     router.refresh()
   }
 
-  const handleEdit = (e) => {
+  const handleEdit = (e:any) => {
     setId(e.target.dataset.id)
   }
 
@@ -51,7 +51,7 @@ const AccordionList = (props:any) => {
     setModal(false)
   }
   
-  const handleSubmit = async(e) => {
+  const handleSubmit = async(e:any) => {
     e.preventDefault()
     await fetch('/api/openProblems', {
       method:"POST",
