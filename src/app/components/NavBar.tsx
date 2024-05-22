@@ -15,6 +15,8 @@ const Navbar = () => {
     <ul>
     <li><Link href="/">Home</Link></li>  
     <li><Link href="/problems">Problems</Link></li> 
+    <li>Profile</li>
+    <li>About</li>
 
     </ul>
     <div className='icons'>
