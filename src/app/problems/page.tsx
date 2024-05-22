@@ -14,7 +14,7 @@ interface Problem {
   created_at: string;
 }
 
-async function fetchProblems(): Promise<Problem[]> {
+export async function fetchProblems(): Promise<Problem[]> {
   const res = await fetch('http://localhost:3000/api/problems', {
     // Optional: Adjust the caching behavior if necessary
     cache: 'no-store', // Uncomment this line to disable caching
