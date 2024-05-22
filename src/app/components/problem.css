@@ -116,3 +116,7 @@ html{
   background: black;
   /* Your styles for the Close IconButton */
 }
+
+.problems-main{
+  height: 100%;
+}
