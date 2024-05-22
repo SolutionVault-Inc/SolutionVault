@@ -10,12 +10,15 @@ jest.mock('next/navigation', () => ({
 }));
 
 describe('SearchBar', () => {
+  const mockSetProblems = jest.fn();
+
   beforeEach(() => {
     fetchMock.resetMocks();
+    jest.clearAllMocks();
   });
 
   test('renders the search bar and button', () => {
-    render(React.createElement(SearchBar));
+    render(React.createElement(SearchBar, { setProblems: mockSetProblems }));
 
     const input = screen.getByPlaceholderText('Search');
     const button = screen.getByText('Search');
@@ -25,7 +28,7 @@ describe('SearchBar', () => {
   });
 
   test('updates the searchContent state on input change', () => {
-    render(React.createElement(SearchBar));
+    render(React.createElement(SearchBar, { setProblems: mockSetProblems }));
 
     const input = screen.getByPlaceholderText('Search');
 
@@ -40,7 +43,7 @@ describe('SearchBar', () => {
 
     fetchMock.mockResponseOnce(JSON.stringify({ results: [] }));
 
-    render(React.createElement(SearchBar));
+    render(React.createElement(SearchBar, { setProblems: mockSetProblems }));
 
     const input = screen.getByPlaceholderText('Search');
     const button = screen.getByText('Search');
@@ -55,7 +58,9 @@ describe('SearchBar', () => {
         body: JSON.stringify({ searchTerms: 'test search' }),
       });
 
+      expect(mockSetProblems).toHaveBeenCalledWith({ results: [] });
       expect(input).toHaveValue('');
+      expect(mockRefresh).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -63,10 +68,10 @@ describe('SearchBar', () => {
     const mockRefresh = jest.fn();
     (useRouter as jest.Mock).mockReturnValue({ refresh: mockRefresh });
 
-    const mockResponse = { json: jest.fn().mockResolvedValue({ results: [] }) };
+    const mockResponse = { results: [] };
     fetchMock.mockResponseOnce(JSON.stringify(mockResponse));
 
-    render(React.createElement(SearchBar));
+    render(React.createElement(SearchBar, { setProblems: mockSetProblems }));
 
     const input = screen.getByPlaceholderText('Search');
     const button = screen.getByText('Search');
@@ -76,6 +81,7 @@ describe('SearchBar', () => {
 
     await waitFor(() => {
       expect(fetchMock).toHaveBeenCalledTimes(1);
+      expect(mockSetProblems).toHaveBeenCalledWith(mockResponse);
       expect(mockRefresh).toHaveBeenCalledTimes(1);
     });
   });

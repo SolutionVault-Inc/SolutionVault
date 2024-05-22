@@ -37,7 +37,8 @@
     "react": "^18",
     "react-dom": "^18",
     "styled-components": "^6.1.11",
-    "util": "^0.12.5"
+    "util": "^0.12.5",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.5",
@@ -49,6 +50,7 @@
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "@types/supertest": "^6.0.2",
+    "@types/uuid": "^9.0.8",
     "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",

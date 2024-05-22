@@ -2,15 +2,15 @@ import React, { createElement } from 'react';
 import { render, screen, waitFor, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ProblemsPage, { fetchProblems, Problem } from '../../src/app/problems/page';
-import AccordionList from '../../src/app/problems/AccordianList';
+import ClientContainer from '../../src/app/problems/ClientContainer';
 
-// Mock the fetchProblems function and AccordionList component
+// Mock the fetchProblems function and ClientContainer component
 jest.mock('../../src/app/problems/page', () => ({
   ...jest.requireActual('../../src/app/problems/page'),
   fetchProblems: jest.fn(),
 }));
 
-jest.mock('../../src/app/problems/AccordianList', () => jest.fn());
+jest.mock('../../src/app/problems/ClientContainer', () => jest.fn());
 
 describe('ProblemsPage', () => {
   let mockProblems: Problem[];
@@ -40,7 +40,13 @@ describe('ProblemsPage', () => {
     ];
 
     (fetchProblems as jest.Mock).mockResolvedValue(mockProblems);
-    (AccordionList as jest.Mock).mockImplementation(({ problem }) => createElement('div', null, problem.title));
+    (ClientContainer as jest.Mock).mockImplementation(({ problems }) =>
+      createElement(
+        'div',
+        null,
+        problems.map((problem) => createElement('div', { key: problem.id }, problem.title))
+      )
+    );
   });
 
   afterEach(() => {
@@ -57,10 +63,8 @@ describe('ProblemsPage', () => {
       expect(screen.getByText('Problem 2')).toBeInTheDocument();
     });
 
-    // Check that AccordionList is called for each problem
-    expect(AccordionList).toHaveBeenCalledTimes(mockProblems.length);
-    expect(AccordionList).toHaveBeenCalledWith({ problem: mockProblems[0] }, {});
-    expect(AccordionList).toHaveBeenCalledWith({ problem: mockProblems[1] }, {});
+    // Check that ClientContainer is called with the correct problems
+    expect(ClientContainer).toHaveBeenCalledWith({ problems: mockProblems }, {});
   });
 
   it('displays an error message when fetch fails', async () => {
