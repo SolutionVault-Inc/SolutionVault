@@ -36,8 +36,7 @@ async function fetchProblems(): Promise<Problem[]> {
 const ProblemsPage = async () => {
 
   const problems = await fetchProblems();
-  console.log(problems);
-  
+
   return (
     <>
       <main>

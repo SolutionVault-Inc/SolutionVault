@@ -1,14 +1,14 @@
 import { NextResponse } from 'next/server';
 import { db } from '../../../lib/db';
 
-export async function GET(req) {
+export async function POST(req) {
   try {
     const { searchTerms } = await req.json();
     const solutionIds = await fetchAndProcessDescriptions(searchTerms);
 
     const result = await db.query(
       'SELECT * FROM problems WHERE id = ANY($1::int[])',
-      solutionIds
+      [solutionIds]
     );
     return NextResponse.json(result.rows);
   } catch (error) {
