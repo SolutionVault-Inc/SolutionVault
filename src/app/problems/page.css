@@ -5,10 +5,13 @@ main{
   margin: auto;
   margin-top: 30px;
   border: 2px solid black;
+  height: auto;
 }
 
-.accordian-container {
-  display:flex;
-  width:100%;
-  justify-content: space-between;
+.accordian-container{
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: auto;
 }
+
