@@ -1,16 +1,17 @@
 const nodemailer = require('nodemailer');
+const crypto = require('crypto');
 
 function generateRandomHex() {
     const length = 16;
 
     const randomBytes = new Uint8Array(length / 2);
-    window.crypto.getRandomValues(randomBytes);
+    const randomized = crypto.getRandomValues(randomBytes);
 
-    return Array.from(randomBytes, byte => byte.toString(16).padStart(2, '0')).join('');
+    return Array.from(randomized, byte => byte.toString(16).padStart(2, '0')).join('');
 }
 
 function generateUrl(randomHex, user_id) {
-    const baseUrl = 'http://localhost:3000/signup';
+    const baseUrl = 'http://localhost:3000/api/signup';
 
     // Parameters to add
     const params = {
@@ -55,7 +56,7 @@ export async function sendEmail(email, username, user_id) {
   try {
     const info = await transporter.sendMail(mailOptions);
     console.log('Email sent: %s', info.messageId);
-    return info;
+    return randomHex;
   } catch (error) {
     console.error('Error sending email:', error);
     throw error;
