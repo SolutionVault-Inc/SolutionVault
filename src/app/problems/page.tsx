@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '@/app/components/NavBar';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -34,7 +34,6 @@ async function fetchProblems(): Promise<Problem[]> {
 const ProblemsPage = async () => {
   const problems = await fetchProblems();
 
-  console.log(problems);
   return (
     <>
       <header>
