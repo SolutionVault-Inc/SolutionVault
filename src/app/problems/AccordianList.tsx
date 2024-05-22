@@ -117,42 +117,48 @@ const AccordionList = (props:any) => {
         <p>
           <strong>Created At:</strong> {new Date(problem.created_at).toLocaleString()}
         </p>
-        <button data-id={problem.id} onClick={handleModal}>Delete</button>
-        <button data-id={problem.id} onClick={handleEdit}>Edit</button>
+        <div className='buttonModal'>
+        <button className="delete2" data-id={problem.id} onClick={handleModal}>Delete</button>
+        <button className="edit" data-id={problem.id} onClick={handleEdit}>Edit</button>
+        </div>
         </>
         :
+        <div className='submit-modal'>
         <form onSubmit={handleSubmit}>
 
-          <label htmlFor="type"><strong>Category: </strong></label>
+          <p>
+          <label htmlFor="type"><strong>Category: </strong></label> <br></br>
 
           <select id="type" name="type" value={editFormData.type} onChange={handleChange}>
             <option value="front-end">Front-End</option>
             <option value="back-end">Back-End</option>
             <option value="other">Other</option>
           </select>
+          </p>
 
           <p>
-            <strong>Description: </strong>
+            <strong>Description: </strong> <br></br>
             <textarea name="description" value={editFormData.description} onChange={handleChange} placeholder={problem.description}></textarea>
           </p>
 
           <p>
-            <strong>Solution: </strong> 
+            <strong>Solution: </strong> <br></br>
             <textarea name="solution" value={editFormData.solution} onChange={handleChange} placeholder={problem.solution}></textarea>
           </p>
 
           <p>
-            <strong>Status: </strong>
+            <strong>Status: </strong> <br></br>
             <select id="type" name="type" value={editFormData.status} onChange={handleChange}>
               <option value="open">Open</option>
               <option value="closed">Closed</option>
           </select>
           </p>
-
-          <button type="submit">Submit</button>
-          <button>Cancel</button>
-
+            <div className='submitbtns'>
+          <button className="sub-modal-btn" type="submit">Submit</button>
+          <button className="cancel-modal-btn">Cancel</button>
+          </div>
         </form>
+        </div>
         }
       </AccordionDetails>
     </Accordion>

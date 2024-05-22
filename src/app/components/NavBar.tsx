@@ -1,6 +1,7 @@
 import './Navbar.css'
 import Link from 'next/link';
-
+import Image from 'next/image';
+import user from '../../assets/user.svg'
 
 const Navbar = () => {
 
@@ -8,7 +9,7 @@ const Navbar = () => {
     <div className = 'navBar'>
 
     <div className='logo'>
-    Solution Vault
+    SolutionVault
     </div>
     <ul>
     <li><Link href="/">Home</Link></li>  
@@ -17,7 +18,7 @@ const Navbar = () => {
 
     </ul>
     <div className='icons'>
-    
+    <Image className='icon' src={user} alt="user image"/>
     </div>
     
     </div>
