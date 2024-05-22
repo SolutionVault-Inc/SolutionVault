@@ -4,6 +4,7 @@
   align-items: center;
   height: 100hv;
   
+  
 }
 
 form {
@@ -14,18 +15,94 @@ form {
 }
 
 .form-data{
-  border: 2px solid black;
-  padding: 50px;
   display:flex;
   justify-content: center;
   align-items: center;
-
+  background: rgb(189,134,60);
+  background: linear-gradient(180deg, rgb(49, 35, 16) 7%, rgba(0,0,0,1) 100%);
+  height: 100vh;
+  margin: auto;
+  color: white;
 }
 
-.buttons{
-   margin-top: 10px;
+.f-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(189, 134, 60);
+  background: rgba(0, 0, 0, 0.523);
+  margin: 50px auto;
+  color: white;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 20px rgba(196, 149, 40, 0.87);
+  height: 80vh;
+  width: 60%;
+  padding-top: 50px;
+  padding-bottom: 70px;
+  
 }
 
 .submit {
   background-color: rebeccapurple;
+}
+
+.title{
+  font-size: 50px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 500;
+  flex-wrap: nowrap;
+}
+
+html{
+  font-size: large;
+}
+
+input,
+textarea,
+select {
+  background-color: transparent; 
+  color: white; 
+  border: 1px solid white; 
+  padding: 0.5rem; 
+  border-radius: 5px; 
+  outline: none; 
+}
+
+.submit{
+  background-color: transparent;
+  color: white; 
+  border: 1px solid white;
+  padding: 0.5rem 1rem; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+  width: 100%;
+}
+.submit:hover{
+  background-color: #CDFF57; 
+  border-color:  #CDFF57;
+  color: black; 
+}
+
+.clear{
+  background-color: transparent;
+  color: white; 
+  border: 1px solid white; 
+  padding: 0.5rem 1rem; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+  width: 100%;
+}
+
+.clear:hover{
+  background-color: #FF8957; 
+  border-color: #FF8957; 
+  color: black; 
+}
+
+.btn-container{
+  display: flex;
+  gap: 1rem; 
 }
