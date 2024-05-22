@@ -7,12 +7,12 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Pagination from '@mui/material/Pagination'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import './page.css'
 
 const AccordionList = (props:any) => {
-
   const { problem } = props
   const [ modal,setModal ] = useState(false)
   const [ id,setId ] = useState('')
@@ -86,8 +86,10 @@ const AccordionList = (props:any) => {
 
   return (
     <>
+    <div className='body'>
     {!modal ? 
     <div className="accordian-container">
+      
     <Accordion key={problem.id}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -164,11 +166,14 @@ const AccordionList = (props:any) => {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Are you sure you want to delete this problem?
           </Typography>
-          <Button variant="contained" onClick={handleDelete}>DELETE</Button>
-          <Button variant="contained" onClick={handleCancel}>CANCEL</Button>
+          <div className='buttondiv'>
+          <Button className ='delete' variant="contained" onClick={handleDelete}>DELETE</Button>
+          <Button className ='cancel' variant="contained" onClick={handleCancel}>CANCEL</Button>
+          </div>
         </Box>
     </Modal>
     }
+    </div>
     </>
 
   )

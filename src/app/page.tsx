@@ -1,4 +1,3 @@
-import Navbar from '@/app/components/NavBar';
 import ProblemForm from './components/ProblemForm';
 import MainBody from './components/Mainbody';
 
