@@ -1,10 +1,9 @@
-// src/app/pages/ProblemsPage.tsx
 import React from 'react';
 import './page.css';
 import AccordionList from './AccordianList';
 import SearchBar from './SearchBar';
 
-export interface Problem {
+interface Problem {
   id: string;
   title: string;
   category: string;
@@ -17,7 +16,9 @@ export interface Problem {
 
 export async function fetchProblems(): Promise<Problem[]> {
   const res = await fetch('http://localhost:3000/api/problems', {
-    cache: 'no-store',
+    // Optional: Adjust the caching behavior if necessary
+    cache: 'no-store', // Uncomment this line to disable caching
+    // next: { revalidate: 3600 },
   });
 
   if (!res.ok) {
@@ -32,13 +33,15 @@ const ProblemsPage = async () => {
 
   return (
     <>
-      <main>
-        <div className="accordion">
+      <main className="problems-main">
+        <SearchBar />
+        <div className="accordian">
           {problems.map((problem: Problem) => (
-            <AccordionList key={problem.id} problem={problem} />
+            <AccordionList key={crypto.randomUUID()} problem={problem} />
           ))}
         </div>
       </main>
+
       <footer></footer>
     </>
   );

@@ -1,5 +1,5 @@
-import pkg from 'pg';
-import { db } from '../../src/lib/db'; // Adjust the path to your db module
+import { db, hashPassword } from '../../src/lib/db'; // Adjust the path to your db module
+import bcrypt from 'bcrypt';
 
 jest.mock('pg', () => {
   const mClient = {
@@ -14,6 +14,11 @@ jest.mock('pg', () => {
   };
   return { Pool: jest.fn(() => mPool) };
 });
+
+jest.mock('bcrypt', () => ({
+  genSalt: jest.fn(),
+  hash: jest.fn(),
+}));
 
 describe('db query', () => {
   let pool: any;
@@ -47,5 +52,31 @@ describe('db query', () => {
     pool.query.mockRejectedValueOnce(new Error(errorMessage));
 
     await expect(db.query(queryText, queryParams)).rejects.toThrow(errorMessage);
+  });
+});
+
+describe('hashPassword', () => {
+  test('should hash the password correctly', async () => {
+    const password = 'mysecretpassword';
+    const salt = 'randomSalt';
+    const hashedPassword = 'hashedPassword';
+
+    (bcrypt.genSalt as jest.Mock).mockResolvedValue(salt);
+    (bcrypt.hash as jest.Mock).mockResolvedValue(hashedPassword);
+
+    const result = await hashPassword(password);
+
+    expect(bcrypt.genSalt).toHaveBeenCalledWith(10);
+    expect(bcrypt.hash).toHaveBeenCalledWith(password, salt);
+    expect(result).toBe(hashedPassword);
+  });
+
+  test('should handle errors during hashing', async () => {
+    const password = 'mysecretpassword';
+    const errorMessage = 'Hashing error';
+
+    (bcrypt.genSalt as jest.Mock).mockRejectedValue(new Error(errorMessage));
+
+    await expect(hashPassword(password)).rejects.toThrow(errorMessage);
   });
 });
