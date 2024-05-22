@@ -1,18 +1,11 @@
-
 import Navbar from '@/app/components/NavBar';
-import ProblemForm from './problemForm';
+import ProblemForm from './components/ProblemForm';
 
 export default function Home() {
-
   return (
     <>
-      <header>
-        <Navbar />
-        {/* <button>Add Problem</button>
-        <button>Get All Problems</button> */}
-      </header>
       <main>
-          <ProblemForm/>
+        <ProblemForm />
       </main>
     </>
   );
