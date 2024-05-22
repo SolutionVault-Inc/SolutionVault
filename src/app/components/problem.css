@@ -57,9 +57,7 @@ html{
   font-size: large;
 }
 
-input,
-textarea,
-select {
+.problemFormInputs {
   background-color: transparent; 
   color: white; 
   border: 1px solid white; 

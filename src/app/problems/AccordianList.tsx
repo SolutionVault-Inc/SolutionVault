@@ -16,6 +16,14 @@ const AccordionList = (props:any) => {
   const { problem } = props
   const [ modal,setModal ] = useState(false)
   const [ id,setId ] = useState('')
+  const [ editFormData,setEditFormData ] = useState({
+    description:problem.description,
+    type:problem.category,
+    title:problem.title,
+    solution:problem.solution ? problem.solution: "",
+    status:problem.status ? problem.status : ""
+  })
+  console.log(editFormData)
   const router = useRouter()
 
   const handleDelete = async() => {
@@ -29,6 +37,10 @@ const AccordionList = (props:any) => {
     router.refresh()
   }
 
+  const handleEdit = (e) => {
+    setId(e.target.dataset.id)
+  }
+
   const handleModal = (e:any) => {
     setId(e.target.dataset.id)
     setModal(true)
@@ -39,6 +51,26 @@ const AccordionList = (props:any) => {
     setModal(false)
   }
   
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+    await fetch('/api/openProblems', {
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({...editFormData,id})
+    })
+    router.refresh()
+    
+  }
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setEditFormData({
+      ...editFormData,
+      [name]: value,
+    });
+  };
 
   const style = {
     position: 'absolute' as 'absolute',
@@ -67,11 +99,14 @@ const AccordionList = (props:any) => {
         <h3>{problem.title}</h3>
       </AccordionSummary>
       <AccordionDetails>
+        {
+        id != problem.id ?
+        <>
         <p>
-          <strong>Type:</strong> {problem.category}
+          <strong>Category:</strong> {problem.category}
         </p>
         <p>
-          <strong>Description:</strong> {problem.description}
+          <strong>Description:</strong> <br/>{problem.description}
         </p>
         <p>
           <strong>Solution:</strong> {problem.solution}
@@ -82,10 +117,45 @@ const AccordionList = (props:any) => {
         <p>
           <strong>Created At:</strong> {new Date(problem.created_at).toLocaleString()}
         </p>
-        <button className='delete2' data-id={problem.id} onClick={handleModal}>Delete</button>
+        <button data-id={problem.id} onClick={handleModal}>Delete</button>
+        <button data-id={problem.id} onClick={handleEdit}>Edit</button>
+        </>
+        :
+        <form onSubmit={handleSubmit}>
+
+          <label htmlFor="type"><strong>Category: </strong></label>
+
+          <select id="type" name="type" value={editFormData.type} onChange={handleChange}>
+            <option value="front-end">Front-End</option>
+            <option value="back-end">Back-End</option>
+            <option value="other">Other</option>
+          </select>
+
+          <p>
+            <strong>Description: </strong>
+            <textarea name="description" value={editFormData.description} onChange={handleChange} placeholder={problem.description}></textarea>
+          </p>
+
+          <p>
+            <strong>Solution: </strong> 
+            <textarea name="solution" value={editFormData.solution} onChange={handleChange} placeholder={problem.solution}></textarea>
+          </p>
+
+          <p>
+            <strong>Status: </strong>
+            <select id="type" name="type" value={editFormData.status} onChange={handleChange}>
+              <option value="open">Open</option>
+              <option value="closed">Closed</option>
+          </select>
+          </p>
+
+          <button type="submit">Submit</button>
+          <button>Cancel</button>
+
+        </form>
+        }
       </AccordionDetails>
     </Accordion>
-    
     </div>
     :
     <Modal

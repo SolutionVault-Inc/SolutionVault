@@ -9,8 +9,8 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
 const ProblemForm = () => {
-  const [open, setOpen] = React.useState(false);
 
+  const [open, setOpen] = React.useState(false);
 
   const [formData, setFormData] = useState({
     description: '',
@@ -22,7 +22,7 @@ const ProblemForm = () => {
     e.preventDefault();
     const { title, description, type } = formData;
 
-    const response = await axios.post('/api/problems', {
+    await axios.post('/api/problems', {
       title,
       description,
       type,
@@ -77,15 +77,15 @@ const ProblemForm = () => {
       <div className='title'>Add a new question.</div>
         <label htmlFor="problemTitle">Title:</label>
 
-        <input id="problemTitle" name="title" value={formData.title} onChange={handleChange}></input>
+        <input className="problemFormInputs" id="problemTitle" name="title" value={formData.title} onChange={handleChange}></input>
 
         <label htmlFor="problemDescription">Describe the Problem:</label>
 
-        <textarea id="problemDescription" name="description" value={formData.description} onChange={handleChange}></textarea>
+        <textarea className="problemFormInputs" id="problemDescription" name="description" value={formData.description} onChange={handleChange}></textarea>
 
         <label htmlFor="type">Which Stack?</label>
 
-        <select id="type" name="type" value={formData.type} onChange={handleChange}>
+        <select className="problemFormInputs" id="type" name="type" value={formData.type} onChange={handleChange}>
           <option value="front-end">Front-End</option>
           <option value="back-end">Back-End</option>
           <option value="other">Other</option>
@@ -93,11 +93,11 @@ const ProblemForm = () => {
         <div className='btn-container'>
         <button className='submit' type="submit" onClick={handleClick}>Add Problem</button>
         <Snackbar
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        message="Problem Added!"
-        action={action}
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          message="Problem Added!"
+          action={action}
         />
         <button className='clear' onClick={handleClear}>Clear</button>
         </div>
