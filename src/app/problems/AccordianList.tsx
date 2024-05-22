@@ -7,7 +7,6 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Pagination from '@mui/material/Pagination';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import './page.css';
@@ -85,65 +84,64 @@ const AccordionList = (props: any) => {
 
   return (
     <>
-    <div className='body'>
-    {!modal ? 
-    <div className="accordian-container">
-      
-    <Accordion key={problem.id}>
-      <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        aria-controls={`panel-${problem.id}-content`}
-        id={`panel-${problem.id}-header`}
-      >
-        <h3>{problem.title}</h3>
-      </AccordionSummary>
-      <AccordionDetails>
-        {
-        id != problem.id ?
-        <>
-        <p>
-          <strong>Category:</strong> {problem.category}
-        </p>
-        <p>
-          <strong>Description:</strong> <br/>{problem.description}
-        </p>
-        <p>
-          <strong>Solution:</strong> {problem.solution}
-        </p>
-        <p>
-          <strong>Status:</strong> {problem.status}
-        </p>
-        <p>
-          <strong>Created At:</strong> {new Date(problem.created_at).toLocaleString()}
-        </p>
-        <div className='buttonModal'>
-        <button className="delete2" data-id={problem.id} onClick={handleModal}>Delete</button>
-        <button className="edit" data-id={problem.id} onClick={handleEdit}>Edit</button>
-        </div>
-        </>
-        :
-        <div className='submit-modal'>
-        <form onSubmit={handleSubmit}>
+      <div className="body">
+        {!modal ? (
+          <div className="accordian-container">
+            <Accordion key={problem.id}>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls={`panel-${problem.id}-content`} id={`panel-${problem.id}-header`}>
+                <h3>{problem.title}</h3>
+              </AccordionSummary>
+              <AccordionDetails>
+                {id !== problem.id ? (
+                  <>
+                    <p>
+                      <strong>Category:</strong> {problem.category}
+                    </p>
+                    <p>
+                      <strong>Description:</strong> <br />
+                      {problem.description}
+                    </p>
+                    <p>
+                      <strong>Solution:</strong> {problem.solution}
+                    </p>
+                    <p>
+                      <strong>Status:</strong> {problem.status}
+                    </p>
+                    <p>
+                      <strong>Created At:</strong> {new Date(problem.created_at).toLocaleString()}
+                    </p>
+                    <div className="buttonModal">
+                      <button className="delete2" data-id={problem.id} onClick={handleModal}>
+                        Delete
+                      </button>
+                      <button className="edit" data-id={problem.id} onClick={handleEdit}>
+                        Edit
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <form onSubmit={handleSubmit}>
+                    <p>
+                      <label htmlFor="type">
+                        <strong>Category: </strong>
+                      </label>{' '}
+                      <br />
+                      <select id="type" name="type" value={editFormData.type} onChange={handleChange}>
+                        <option value="front-end">Front-End</option>
+                        <option value="back-end">Back-End</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </p>
 
-          <p>
-          <label htmlFor="type"><strong>Category: </strong></label> <br></br>
+                    <p>
+                      <strong>Description: </strong> <br />
+                      <textarea name="description" value={editFormData.description} onChange={handleChange} placeholder={problem.description}></textarea>
+                    </p>
 
-          <select id="type" name="type" value={editFormData.type} onChange={handleChange}>
-            <option value="front-end">Front-End</option>
-            <option value="back-end">Back-End</option>
-            <option value="other">Other</option>
-          </select>
-          </p>
-
-          <p>
-            <strong>Description: </strong> <br></br>
-            <textarea name="description" value={editFormData.description} onChange={handleChange} placeholder={problem.description}></textarea>
-          </p>
-
-          <p>
-            <strong>Solution: </strong> <br></br>
-            <textarea name="solution" value={editFormData.solution} onChange={handleChange} placeholder={problem.solution}></textarea>
-          </p>
+                    <p>
+                      <strong>Solution: </strong> <br />
+                      <textarea name="solution" value={editFormData.solution} onChange={handleChange} placeholder={problem.solution}></textarea>
+                    </p>
 
                     <p>
                       <strong>Status: </strong>
@@ -154,9 +152,14 @@ const AccordionList = (props: any) => {
                         </select>
                       </label>
                     </p>
-
-                    <button type="submit">Submit</button>
-                    <button>Cancel</button>
+                    <div className="submitbtns">
+                      <button className="sub-modal-btn" type="submit">
+                        Submit
+                      </button>
+                      <button className="cancel-modal-btn" type="button" onClick={handleCancel}>
+                        Cancel
+                      </button>
+                    </div>
                   </form>
                 )}
               </AccordionDetails>
@@ -180,40 +183,6 @@ const AccordionList = (props: any) => {
           </Modal>
         )}
       </div>
-          <p>
-            <strong>Status: </strong> <br></br>
-            <select id="type" name="type" value={editFormData.status} onChange={handleChange}>
-              <option value="open">Open</option>
-              <option value="closed">Closed</option>
-          </select>
-          </p>
-            <div className='submitbtns'>
-          <button className="sub-modal-btn" type="submit">Submit</button>
-          <button className="cancel-modal-btn">Cancel</button>
-          </div>
-        </form>
-        </div>
-        }
-      </AccordionDetails>
-    </Accordion>
-    </div>
-    :
-    <Modal
-      open={modal}
-      onClose={handleCancel}
-    >
-      <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Are you sure you want to delete this problem?
-          </Typography>
-          <div className='buttondiv'>
-          <Button className ='delete' variant="contained" onClick={handleDelete}>DELETE</Button>
-          <Button className ='cancel' variant="contained" onClick={handleCancel}>CANCEL</Button>
-          </div>
-        </Box>
-    </Modal>
-    }
-    </div>
     </>
   );
 };

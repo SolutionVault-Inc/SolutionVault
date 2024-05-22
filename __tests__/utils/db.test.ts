@@ -16,7 +16,7 @@ jest.mock('pg', () => {
 });
 
 describe('db query', () => {
-  let pool;
+  let pool: any;
 
   beforeAll(() => {
     const { Pool } = require('pg');

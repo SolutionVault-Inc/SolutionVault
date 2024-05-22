@@ -3,6 +3,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import AccordionList from '../../src/app/problems/AccordianList';
 import { useRouter } from 'next/navigation';
+import 'whatwg-fetch';
 
 // Mock the useRouter hook
 jest.mock('next/navigation', () => ({
