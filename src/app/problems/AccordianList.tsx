@@ -4,15 +4,23 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import axios from 'axios';
 import './page.css'
 
 const AccordionList = (props:any) => {
   const {problem} = props
 
-  const handleDelete = (e:any) => {
+  const handleDelete = async(e:any) => {
     const {id} = e.target.dataset;
-    axios.post('/api/delete',id)
+    await fetch('/api/delete/',{
+      method:'POST',
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({id})
+    })
+    await fetch('http://localhost:3000/api/problems',{
+      cache: 'no-store'
+    })
   }
 
   return (

@@ -1,10 +1,5 @@
 
 import React from 'react';
-import Navbar from '@/app/components/NavBar';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './page.css'
 import AccordionList from './AccordianList';
 

@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '../../../lib/db';
 
-export async function DELETE(req, res) {
+export async function POST(req, res) {
   try {
-    const { id } = req.json();
 
+    const { id } = await req.json();
+    console.log(id)
     if (!id) {
       return new NextResponse('Problem ID is required', { status: 400 });
     }
