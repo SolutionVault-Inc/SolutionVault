@@ -10,7 +10,6 @@ import Typography from '@mui/material/Typography';
 import Pagination from '@mui/material/Pagination'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import './page.css'
 
 const AccordionList = (props:any) => {
   const { problem } = props
@@ -23,7 +22,6 @@ const AccordionList = (props:any) => {
     solution:problem.solution ? problem.solution: "",
     status:problem.status ? problem.status : ""
   })
-  console.log(editFormData)
   const router = useRouter()
 
   const handleDelete = async() => {
