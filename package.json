@@ -23,13 +23,18 @@
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "fetch-blob": "^4.0.0",
+    "formdata-polyfill": "^4.0.10",
     "next-themes": "^0.3.0",
+    "node-fetch": "^2.7.0",
+    "node-mocks-http": "^1.14.1",
     "path": "^0.12.7",
     "pg": "^8.11.5",
     "popper.js": "^1.16.1",
     "react": "^18",
     "react-dom": "^18",
-    "styled-components": "^6.1.11"
+    "styled-components": "^6.1.11",
+    "util": "^0.12.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.5",
