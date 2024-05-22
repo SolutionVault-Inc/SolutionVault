@@ -1,0 +1,62 @@
+.body-container{
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; Vertical center alignment */
+  /* align-items: center; Horizontal center alignment */
+  height: 100vh; /* Set height to 100% of the viewport height */
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.contents{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between;  */
+  height: 100vh;
+  padding: 10px 8%;
+  background: radial-gradient(circle, rgba(196, 151, 14, 0) 0%, rgba(0, 0, 0, 0.573) 30%, rgb(0, 0, 0) 60%, rgb(0, 0, 0) 80%, rgb(72, 48, 10) 100%), url(../../assets/vaultlaptop.jpeg);
+  /* background-size: cover; */
+
+  /* background-size: cover; */
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+
+.text1{
+  color: white;
+  justify-content: left;
+  font-size: 45px;
+  width: 60%;
+  padding-left: 25px;
+  padding-top: 50px;
+  text-shadow: 4px 4px 10px rgb(0, 0, 0);
+}
+.text2{
+  color: white;
+  justify-content: right;
+  font-size: 40px;
+  text-align: right;
+  margin: auto;
+  margin-bottom: -20px;
+  margin-left: 50%;
+  width: 43%;
+  text-shadow: 4px 4px 4px rgb(0, 0, 0);
+}
+
+.scroll{
+  color: white;
+  justify-content: center;
+  margin: 20px auto 0;
+  font-size: 24px;
+  text-shadow: 2px 2px 20px rgb(0, 0, 0);
+}
+
+.image{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 0;
+}

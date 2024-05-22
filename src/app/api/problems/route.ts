@@ -3,7 +3,7 @@ import { NextRequest,NextResponse } from 'next/server';
 import type { NextApiRequest,NextApiResponse } from 'next';
 import { db } from '../../../lib/db';
 
-export async function GET() {
+export async function GET(req:any,res:any) {
   try {
     const result = await db.query('SELECT * FROM problems ORDER BY created_at DESC', []);
     return NextResponse.json(result.rows);
