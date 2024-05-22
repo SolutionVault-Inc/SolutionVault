@@ -11,7 +11,7 @@ jest.mock('next/navigation', () => ({
 
 jest.mock('next/link', () => ({
   __esModule: true,
-  default: (props) => React.createElement('a', { ...props }),
+  default: (props: any) => React.createElement('a', { ...props }),
 }));
 
 describe('CatchAllPage', () => {

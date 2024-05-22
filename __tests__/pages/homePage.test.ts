@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Home from '../../src/app/page.tsx';
-import Navbar from '../../src/app/components/NavBar.tsx';
+import Mainbody from '../../src/app/components/Mainbody.tsx';
 import ProblemForm from '../../src/app/components/ProblemForm.tsx';
 
-// Mock the Navbar and ProblemForm components
-jest.mock('../../src/app/components/NavBar.tsx', () => ({
+// Mock the Mainbody and ProblemForm components
+jest.mock('../../src/app/components/Mainbody.tsx', () => ({
   __esModule: true,
-  default: () => React.createElement('div', null, 'Mocked Navbar'),
+  default: () => React.createElement('div', null, 'Mocked Mainbody'),
 }));
 
 jest.mock('../../src/app/components/ProblemForm.tsx', () => ({
@@ -16,9 +16,9 @@ jest.mock('../../src/app/components/ProblemForm.tsx', () => ({
 }));
 
 describe('Home', () => {
-  it('should render the Navbar component', () => {
+  it('should render the Mainbody component', () => {
     render(React.createElement(Home));
-    expect(screen.getByText('Mocked Navbar')).toBeInTheDocument();
+    expect(screen.getByText('Mocked Mainbody')).toBeInTheDocument();
   });
 
   it('should render the ProblemForm component', () => {

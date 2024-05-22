@@ -12,10 +12,10 @@ export async function POST(req) {
     const result = await db.query('SELECT * FROM problems WHERE id = ANY($1::int[])', [solutionIds]);
     console.log('Query result:', result.rows);
 
-    const result = await db.query(
-      'SELECT * FROM problems WHERE id = ANY($1::int[])',
-      [solutionIds]
-    );
+    // const result = await db.query(
+    //   'SELECT * FROM problems WHERE id = ANY($1::int[])',
+    //   [solutionIds]
+    // );
     return NextResponse.json(result.rows);
   } catch (error) {
     console.error('Error fetching problems:', error);
