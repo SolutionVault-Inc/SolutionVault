@@ -5,9 +5,9 @@ export default function Home() {
   return (
     <>
     <MainBody />
-      <main>
-        <ProblemForm />
-      </main>
+    <main className="main">
+      <ProblemForm />
+    </main>
     </>
   );
 }

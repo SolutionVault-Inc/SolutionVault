@@ -4,6 +4,7 @@ import { db } from '../../../lib/db';
 export async function POST(req) {
   try {
     const { searchTerms } = await req.json();
+    console.log({searchTerms})
     const solutionIds = await fetchAndProcessDescriptions(searchTerms);
 
     const result = await db.query(
