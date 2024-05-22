@@ -23,7 +23,7 @@ async function fetchAndProcessDescriptions(searchTerms) {
     const res = await db.query('SELECT id, description FROM problems');
     const problems = res.rows;
 
-    const regex = new RegExp(searchTerms); // Adjust your regex pattern as needed
+    const regex = new RegExp(searchTerms, 'i'); // Adjust your regex pattern as needed
     problems.forEach(problem => {
       if (regex.test(problem.description)) {
         solutions.push(problem.id);
