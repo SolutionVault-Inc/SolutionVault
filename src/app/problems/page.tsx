@@ -2,6 +2,7 @@
 import React from 'react';
 import './page.css';
 import AccordionList from './AccordianList';
+import SearchBar from './SearchBar';
 
 export interface Problem {
   id: string;
