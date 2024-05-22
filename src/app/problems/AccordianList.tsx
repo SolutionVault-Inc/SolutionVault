@@ -15,6 +15,7 @@ const AccordionList = (props: any) => {
   const { problem } = props;
   const [modal, setModal] = useState(false);
   const [id, setId] = useState('');
+  console.log(id,problem.id)
   const [editFormData, setEditFormData] = useState({
     description: problem.description,
     type: problem.category,
@@ -92,7 +93,7 @@ const AccordionList = (props: any) => {
                 <h3>{problem.title}</h3>
               </AccordionSummary>
               <AccordionDetails>
-                {id !== problem.id ? (
+                {id != problem.id ? (
                   <>
                     <p>
                       <strong>Category:</strong> {problem.category}
