@@ -39,7 +39,6 @@ form {
   width: 60%;
   padding-top: 50px;
   padding-bottom: 70px;
-  
 }
 
 .submit {
@@ -105,4 +104,19 @@ select {
 .btn-container{
   display: flex;
   gap: 1rem; 
+}
+
+.action-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.undo-button {
+  background: black;
+  /* Your styles for the UNDO Button */
+}
+
+.close-button {
+  background: black;
+  /* Your styles for the Close IconButton */
 }

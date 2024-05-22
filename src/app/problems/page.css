@@ -5,6 +5,13 @@ main{
   margin: auto;
   margin-top: 30px;
   border: 2px solid black;
-  height: 80vh;
+  height: auto;
+}
+
+.accordian-container{
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: auto;
 }
 
