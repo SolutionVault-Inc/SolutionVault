@@ -12,7 +12,7 @@ const AccordionList = (props:any) => {
 
   const handleDelete = (e:any) => {
     const {id} = e.target.dataset;
-    axios.post('/api/delete',id)
+    axios.post('/api/delete', id)
   }
 
   return (
