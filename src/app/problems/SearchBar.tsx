@@ -1,10 +1,8 @@
+'use client';
 
-'use client'
-
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import './SearchBar.css'
-
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import './SearchBar.css';
 
 
 const SearchBar = (props) => {
@@ -18,11 +16,11 @@ const SearchBar = (props) => {
 
   }
 
-  const handleClick = async() => {
-    const response = await fetch('/api/search',{
-      method:"POST",
+  const handleClick = async () => {
+    const response = await fetch('/api/search', {
+      method: 'POST',
       headers: {
-        "Content-Type":"application/json"
+        'Content-Type': 'application/json',
       },
       body:JSON.stringify({searchTerms:searchContent})
     })
@@ -37,7 +35,7 @@ const SearchBar = (props) => {
       <input type="text" placeholder="Search" onChange={handleSearch} value={searchContent}></input>
       <button onClick={handleClick}>Search</button>
     </div>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

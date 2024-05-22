@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import axios from 'axios';
 import ProblemForm from '../../src/app/components/ProblemForm.tsx';
 
@@ -53,5 +53,93 @@ describe('ProblemForm', () => {
     expect(titleInput).toHaveValue('');
     expect(descriptionTextarea).toHaveValue('');
     expect(typeSelect).toHaveValue('front-end');
+  });
+
+  it('should close the Snackbar when the close button is clicked', () => {
+    render(React.createElement(ProblemForm));
+
+    // Open the Snackbar first
+    fireEvent.click(screen.getByText('Add Problem'));
+
+    // Verify Snackbar is open
+    expect(screen.getByText('Problem Added!')).toBeInTheDocument();
+
+    // Close the Snackbar by clicking the close icon button
+    fireEvent.click(screen.getByLabelText('close'));
+
+    // Ensure the Snackbar has had enough time to close
+    setTimeout(() => {
+      expect(screen.queryByText('Problem Added!')).not.toBeInTheDocument();
+    }, 1000); // Wait for the Snackbar to close
+  });
+
+  it('should not close the Snackbar when handleClose is called with "clickaway" reason', () => {
+    render(React.createElement(ProblemForm));
+
+    // Open the Snackbar first
+    fireEvent.click(screen.getByText('Add Problem'));
+
+    // Verify Snackbar is open
+    expect(screen.getByText('Problem Added!')).toBeInTheDocument();
+
+    // Call handleClose with "clickaway" reason
+    fireEvent.keyDown(document, { key: 'Escape', code: 'Escape', reason: 'clickaway' });
+
+    // Ensure the Snackbar is still open
+    expect(screen.getByText('Problem Added!')).toBeInTheDocument();
+  });
+
+  it('should close the Snackbar when handleClose is called without "clickaway" reason', () => {
+    render(React.createElement(ProblemForm));
+
+    // Open the Snackbar first
+    fireEvent.click(screen.getByText('Add Problem'));
+
+    // Verify Snackbar is open
+    expect(screen.getByText('Problem Added!')).toBeInTheDocument();
+
+    // Call handleClose without "clickaway" reason
+    fireEvent.click(screen.getByLabelText('close'));
+
+    // Ensure the Snackbar has had enough time to close
+    setTimeout(() => {
+      expect(screen.queryByText('Problem Added!')).not.toBeInTheDocument();
+    }, 1000); // Wait for the Snackbar to close
+  });
+
+  it('should close the Snackbar when handleClose is called with an undefined reason', () => {
+    render(React.createElement(ProblemForm));
+
+    // Open the Snackbar first
+    fireEvent.click(screen.getByText('Add Problem'));
+
+    // Verify Snackbar is open
+    expect(screen.getByText('Problem Added!')).toBeInTheDocument();
+
+    // Call handleClose with an undefined reason
+    fireEvent.click(screen.getByLabelText('close'));
+
+    // Ensure the Snackbar has had enough time to close
+    setTimeout(() => {
+      expect(screen.queryByText('Problem Added!')).not.toBeInTheDocument();
+    }, 1000); // Wait for the Snackbar to close
+  });
+
+  it('should close the Snackbar when handleClose is called directly with a non-clickaway reason', async () => {
+    render(React.createElement(ProblemForm));
+
+    // Open the Snackbar first
+    fireEvent.click(screen.getByText('Add Problem'));
+
+    // Verify Snackbar is open
+    expect(screen.getByText('Problem Added!')).toBeInTheDocument();
+
+    // Directly simulate a close event with a non-clickaway reason
+    fireEvent.keyDown(document, { key: 'Escape', code: 'Escape' });
+
+    // Ensure the Snackbar has had enough time to close
+    await waitFor(() => {
+      expect(screen.queryByText('Problem Added!')).not.toBeInTheDocument();
+    });
   });
 });

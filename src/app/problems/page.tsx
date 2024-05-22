@@ -1,6 +1,5 @@
-
 import React from 'react';
-import './page.css'
+import './page.css';
 import AccordionList from './AccordianList';
 import SearchBar from './SearchBar';
 import ClientContainer from './ClientContainer';
@@ -31,7 +30,6 @@ export async function fetchProblems(): Promise<Problem[]> {
 }
 
 const ProblemsPage = async () => {
-
   const problems = await fetchProblems();
 
   return (
@@ -50,7 +48,7 @@ const ProblemsPage = async () => {
         ))}
         </div> */}
       </main>
-      
+
       <footer></footer>
     </>
   );

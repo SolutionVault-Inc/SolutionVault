@@ -5,8 +5,9 @@ import Link from 'next/link';
 export default function CatchAllPage({ params }) {
   const { slug } = params;
 
-  if (!slug) {
+  if (!slug || slug.length === 0) {
     notFound();
+    return null; // Return null to prevent rendering
   }
 
   return (
