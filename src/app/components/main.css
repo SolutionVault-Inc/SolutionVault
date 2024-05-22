@@ -16,9 +16,10 @@
   /* justify-content: space-between;  */
   height: 100vh;
   padding: 10px 8%;
-  background-image: linear-gradient(rgb(0, 0, 0), rgba(37, 26, 1, 0.642)), url(../../assets/vault3.jpeg);
-  background-size: cover;
+  background-image: linear-gradient(rgb(0, 0, 0), rgba(37, 26, 1, 0.642)), url(../../assets/vault-laptop.jpeg);
+  /* background-size: cover; */
   background-position: center;
+  background-repeat: no-repeat;
   
 }
 
@@ -47,7 +48,7 @@
   justify-content: center;
   margin: 20px auto 0;
   font-size: 24px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 20px rgb(0, 0, 0);
 }
 
 .image{
