@@ -2,8 +2,8 @@
   background: #000;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; Vertical center alignment */
-  /* align-items: center; Horizontal center alignment */
+  justify-content: space-between;
+  align-items: center;
   height: 100vh; /* Set height to 100% of the viewport height */
   padding: 0;
   margin: 0;
