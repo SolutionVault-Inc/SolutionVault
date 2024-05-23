@@ -7,8 +7,8 @@ body{
   display: flex;
   flex-direction: column;
   padding: 0;
-  margin: auto;
-  height: 60%;
+  /* margin: auto; */
+  min-height: 60%;
   width: 90vw;
 }
 
@@ -61,7 +61,8 @@ body{
 
 .accordian{
   box-shadow: 0 0 20px rgba(196, 149, 40, 0.87);
-  margin: auto;
+
+  /* margin: auto; */
 }
 
 .delete2{

@@ -15,7 +15,6 @@ const AccordionList = (props: any) => {
   const { problem } = props;
   const [modal, setModal] = useState(false);
   const [id, setId] = useState('');
-  console.log(id,problem.id)
   const [editFormData, setEditFormData] = useState({
     description: problem.description,
     type: problem.category,
@@ -23,7 +22,6 @@ const AccordionList = (props: any) => {
     solution: problem.solution ? problem.solution : '',
     status: problem.status ? problem.status : '',
   });
-  console.log(editFormData);
   const router = useRouter();
 
   const handleDelete = async () => {
@@ -72,7 +70,7 @@ const AccordionList = (props: any) => {
   };
 
   const style = {
-    position: 'absolute' as 'absolute',
+    // position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
