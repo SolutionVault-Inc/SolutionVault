@@ -1,0 +1,11 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+[data-theme = "light"]body {
+  color: black;
+  background-color: white;
+}
+
+[data-theme="dark"] body {
+  background-color: black;
+  color: white;
+}

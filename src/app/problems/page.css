@@ -1,0 +1,187 @@
+
+body{
+  background: linear-gradient(180deg, rgb(49, 35, 16) 7%, rgba(0,0,0,1) 100%);
+}
+
+.accordian-container{
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  /* margin: auto; */
+  min-height: 60%;
+  width: 90vw;
+}
+
+.delete{
+  background-color: rgb(35, 35, 35);
+  color: white; 
+  border: 1px solid white;
+  padding: 0.5rem 1rem; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+  width: 100%;
+}
+.delete:hover{
+  background-color: #FF8957; 
+  border-color: white; 
+  color: black; 
+}
+.cancel{
+  background-color:  rgb(35, 35, 35);
+  color: white; 
+  border: 1px solid white; 
+  padding: 0.5rem 1rem; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+  width: 100%;
+  padding-top: 5px;
+}
+.cancel:hover{
+  background-color: #CDFF57; 
+  border-color: white; 
+  color: white; 
+}
+
+.css-1f773le-MuiButtonBase-root-MuiAccordionSummary-root {
+  color: whitesmoke;
+  background-color: black;
+  border: 1px solid rgb(36, 35, 35);
+}
+
+.css-i4bv87-MuiSvgIcon-root{
+  color:white;
+}
+
+.css-15v22id-MuiAccordionDetails-root{
+  background: rgb(30, 30, 30);
+  color: whitesmoke;
+}
+
+.accordian{
+  box-shadow: 0 0 20px rgba(196, 149, 40, 0.87);
+
+  /* margin: auto; */
+}
+
+.delete2{
+  background-color: #b3b1b0;
+  color: black; 
+  border: 1px solid white;
+  padding: 0.5rem 1rem; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+  width: 100%;
+}
+
+.edit{
+  background-color: #b3b1b0;
+  color: black; 
+  border: 1px solid white;
+  padding: 0.5rem 1rem; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+  width: 100%;
+}
+.delete2:hover{
+  background-color: #FF8957;;
+  color: black;
+}
+.edit:hover{
+  background-color: #CDFF57;
+  color: black;
+}
+
+.css-1wnsr1i {
+  background: black;
+  color: white;
+  box-shadow: 0 0 20px rgba(196, 149, 40, 0.87);
+}
+
+.buttondiv{
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  gap: 1rem;
+  padding-top: 5px;
+}
+
+.buttonModal{
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  gap: 1rem;
+  padding-top: 5px;
+}
+
+.submitbtns{
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  gap: 1rem;
+  padding-top: 5px;
+}
+.sub-modal-btn{
+  background-color: #b3b1b0;
+  color: white; 
+  border: 1px solid white;
+  padding: 0.5rem 1rem; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+  width: 100%;
+}
+
+.sub-modal-btn:hover{
+  background-color: #CDFF57; 
+  border-color:  white;
+  color: black; 
+}
+
+.cancel-modal-btn{
+  background-color: #b3b1b0;
+  color: white; 
+  border: 1px solid white;
+  padding: 0.5rem 1rem; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+  width: 100%;
+}
+
+.cancel-modal-btn:hover{
+  background-color: #FF8957; 
+  border-color: white; 
+  color: black; 
+}
+
+textarea{
+  background-color: transparent; 
+  color: white; 
+  border: 1px solid white; 
+  padding: 0.5rem; 
+  border-radius: 5px; 
+  outline: none; 
+}
+
+#type{
+  background-color: transparent; 
+  color: white; 
+  border: 1px solid white; 
+  padding: 0.5rem; 
+  border-radius: 5px; 
+  outline: none; 
+}
+
+.problems-main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+  margin: auto;
+  height: 70vh;
+}
+

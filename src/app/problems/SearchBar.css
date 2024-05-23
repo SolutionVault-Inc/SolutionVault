@@ -1,0 +1,40 @@
+.problems-main {
+  display:flex;
+  flex-direction:column;
+  justify-content: space-around;
+  align-items: space-around;
+}
+
+.searchBarContainer {
+  display:flex;
+  justify-content: center;
+  color:white;
+  margin: 20px auto;
+  gap: 1rem; 
+}
+
+.search{
+  background-color: transparent; 
+  color: white; 
+  border: 1px solid white; 
+  padding: 0.5rem; 
+  border-radius: 5px; 
+  outline: none; 
+}
+
+.search-btn{
+  border-radius: 5px;
+  background-color: transparent;
+  color: white; 
+  border: 1px solid white;
+  padding: 0.5rem 1rem; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+  width: 100%;
+  margin: auto;
+}
+
+.search-btn:hover{
+ background: rgb(218, 173, 26);
+}
