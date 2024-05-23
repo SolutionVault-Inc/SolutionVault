@@ -3,7 +3,7 @@ const { Pool } = pkg;
 import bcrypt from 'bcrypt'
 
 
-const PG_URI = 'postgres://crfhcshd:zHtcF8YMBg2X6kA0UcK1XC3YFOpaUN5k@kala.db.elephantsql.com/crfhcshd';
+const PG_URI = process.env.DB_URI;
 
 // create a new pool here using the connection string above
 const pool = new Pool({
